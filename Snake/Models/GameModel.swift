@@ -37,7 +37,6 @@ struct AIResult {
     let visited: [Position]
     let pathToFood: [Position]
     let pathToTail: [Position]
-    let activePath: [Position]
 }
 
 enum SearchAlgorithm: String, CaseIterable, Identifiable {
@@ -70,11 +69,9 @@ final class GameModel: NSObject, ObservableObject {
     @Published private(set) var colorVisited: [Position] = []
     @Published private(set) var colorToFood: [Position] = []
     @Published private(set) var colorToTail: [Position] = []
-    @Published private(set) var colorActivePath: [Position] = []
     
     // MARK: – AI and timer
     private let ai: SnakeAI
-    private var timerCancellable: AnyCancellable?
     
     // MARK: – Game loop
     private var displayLink: CADisplayLink?
@@ -249,7 +246,6 @@ final class GameModel: NSObject, ObservableObject {
         colorVisited    = result.visited
         colorToFood     = result.pathToFood
         colorToTail     = result.pathToTail
-        colorActivePath = result.activePath
         
         // Move the snake
         guard let next = result.nextMove else {
@@ -309,6 +305,5 @@ final class GameModel: NSObject, ObservableObject {
         colorVisited = []
         colorToFood = []
         colorToTail = []
-        colorActivePath = []
     }
 }

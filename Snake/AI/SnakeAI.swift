@@ -38,8 +38,7 @@ final class SnakeAI {
                 nextMove: step(in: pathFood),
                 visited: visited,
                 pathToFood: pathFood,
-                pathToTail: [],
-                activePath: pathFood
+                pathToTail: []
             )
         }
         
@@ -49,8 +48,7 @@ final class SnakeAI {
                 nextMove: step(in: pathFood),
                 visited: visited,
                 pathToFood: pathFood,
-                pathToTail: [],
-                activePath: pathFood
+                pathToTail: []
             )
         }
         
@@ -62,8 +60,7 @@ final class SnakeAI {
                 nextMove: step(in: pathLongest),
                 visited: visited,
                 pathToFood: [],
-                pathToTail: pathLongest,
-                activePath: pathLongest
+                pathToTail: pathLongest
             )
         }
         
@@ -71,13 +68,11 @@ final class SnakeAI {
         let freeNeighbors = head.neighbors(rows: rows, columns: columns)
             .filter { !snake.contains($0) }
         if let move = freeNeighbors.first {
-            let active = [head, move]
             return AIResult(
                 nextMove: move,
                 visited: visited,
                 pathToFood: [],
-                pathToTail: [],
-                activePath: active
+                pathToTail: []
             )
         }
         
@@ -86,8 +81,7 @@ final class SnakeAI {
             nextMove: nil,
             visited: visited,
             pathToFood: [],
-            pathToTail: [],
-            activePath: []
+            pathToTail: []
         )
     }
     
