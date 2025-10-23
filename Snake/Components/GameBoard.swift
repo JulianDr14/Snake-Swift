@@ -122,7 +122,7 @@ struct StaticGridView: View {
                             y: dy + CGFloat(row) * (cellSize + spacing))
                         let cell = CGRect(origin: origin,
                                           size: .init(width: cellSize, height: cellSize))
-                        ctx.fill(Path(ellipseIn: cell), with: .color(.white))
+                        ctx.fill(Path(ellipseIn: cell), with: .color(.gray.opacity(0.2)))
                     }
                 }
             }
