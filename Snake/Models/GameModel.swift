@@ -57,6 +57,7 @@ final class GameModel: NSObject, ObservableObject {
     @Published private(set) var food: Position
     @Published private(set) var isGameOver: Bool = false
     @Published private(set) var currentDirection: Directions = .right
+    @Published private(set) var score: Int = 0
     
     // MARK: – Control parameters
     @Published var speed: TimeInterval = 0.2
@@ -228,6 +229,7 @@ final class GameModel: NSObject, ObservableObject {
         
         // 5. Check if the snake eats food
         if newHead == food {
+            score += 1
             food = GameModel.placeRandomFood(rows: rows, columns: columns, excluding: snake)
         } else {
             snake.removeFirst()
@@ -263,6 +265,7 @@ final class GameModel: NSObject, ObservableObject {
         
         snake.append(next)
         if grows {
+            score += 1
             food = GameModel.placeRandomFood(rows: rows, columns: columns, excluding: snake)
             clearColor()
         } else {

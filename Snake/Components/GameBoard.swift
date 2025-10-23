@@ -127,6 +127,6 @@ struct StaticGridView: View {
                 }
             }
         }
-        .drawingGroup(opaque: true)
+        .drawingGroup()
     }
 }
